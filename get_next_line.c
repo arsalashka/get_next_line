@@ -60,6 +60,11 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (!stat && !(stat = ft_strdup("")))
 		return (-1);
+	if (stat && ft_strchr(stat, '\n'))
+	{
+		stat = ft_remainder(stat, line, &flag);
+		return (flag);
+	}
 	stat = ft_lets_read(fd, stat);
 	stat = ft_remainder(stat, line, &flag);
 	return (flag);
